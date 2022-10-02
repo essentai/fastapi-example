@@ -14,6 +14,11 @@ class UpdateItem(BaseModel):
     price: Optional[float] = None
     brand: Optional[str] = None
 
+class Poki(BaseModel):
+    affiliation: str
+    orientation: str
+    number: Optional[int] = None
+
 @app.get("/")
 def read_root():
     return { "message": "Hello world!" }
@@ -23,6 +28,7 @@ def about():
     return { "say": "I have nothing to say" }
 
 inventory = {}
+paul_sanders = {}
 
 @app.get("/get-by-name")
 def get_item(*, name: Optional[str] = None, test: int):
